@@ -4,3 +4,11 @@
     image: python 
     command: 
       - echo "yo from repo_1" 
+
+- endpoint: 
+    name: main-point 
+    image: tiangolo/uvicorn-gunicorn-fastapi:python3.7
+    server-command: uvicorn predict:app --host 0.0.0.0 --port 8000
+    files: 
+      - name: model 
+        path: model.h5
