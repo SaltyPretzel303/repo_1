@@ -17,7 +17,7 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_1 second_commit" 
+      - echo "step_1 third_commit" 
       - echo '{"value":"12"}'
 
 - step: 
@@ -25,7 +25,7 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_2 second_commit" 
+      - echo "step_2 third_commit" 
     parameters: 
       - name: main_param
         default: "2"
@@ -41,5 +41,10 @@
         step: step_2
         type: execution 
 
+      - name: node_3
+        step: step_2
+        type: execution
+
     edges: 
       - [node_1.metadata.value, node_2.parameter.main_param]
+      - [node_1.metadata.value, node_3.parameter.main_param]
