@@ -12,3 +12,27 @@
     files: 
       - name: model 
         path: model.h5
+- step: 
+    name: step_1
+    environment: ec2-instance
+    image: python 
+    command: 
+      - echo "step_1 initial_commit" 
+
+- step: 
+    name: step_2
+    environment: ec2-instance
+    image: python 
+    command: 
+      - echo "step_2 initial_commit" 
+
+- pipeline: 
+    name: commit_pipe
+    nodes: 
+      - name: node_1
+        step: step_1
+        type: execution 
+
+      - name: node_2
+        step: step_2
+        type: execution 
