@@ -35,11 +35,13 @@
     nodes: 
       - name: node_1
         step: step_1
-        type: execution 
+        type: execution
+        commit: 370a20f179040e76cf2432aca89c2fc9f80a4cab
 
       - name: node_2
         step: step_2
         type: execution 
+        commit: 4aab59c27d5c522905871329694f33cfaa74dbc2
 
     edges: 
       - [node_1.metadata.value, node_2.parameter.main_param]
