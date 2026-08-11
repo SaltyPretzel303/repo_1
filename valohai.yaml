@@ -17,7 +17,7 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_1 2. first commit" 
+      - echo "step_1 2. second commit" 
       - echo '{"value":"11"}'
 
 - step: 
@@ -25,7 +25,7 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_2 2. second commit" 
+      - echo "step_2 2. second commit for real" 
     parameters: 
       - name: main_param
         default: "21"
