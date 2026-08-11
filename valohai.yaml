@@ -17,7 +17,7 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_1 2. second commit" 
+      - echo "step_1 2. third commit mixed nodes" 
       - echo '{"value":"11"}'
 
 - step: 
@@ -25,7 +25,7 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_2 2. second commit for real" 
+      - echo "step_2 2. third commit mixed nodes" 
     parameters: 
       - name: main_param
         default: "21"
@@ -36,12 +36,12 @@
       - name: node_1
         step: step_1
         type: execution
-        #commit: 370a20f179040e76cf2432aca89c2fc9f80a4cab
+        commit: d9036ff99517bcb2007ce3c7eec6b0348b11ec59
 
       - name: node_2
         step: step_2
         type: execution 
-        #commit: 4aab59c27d5c522905871329694f33cfaa74dbc2
+        commit: 687443b9887154fadaf08d5db5b0ea2a5e4813a1
 
     edges: 
       - [node_1.metadata.value, node_2.parameter.main_param]
