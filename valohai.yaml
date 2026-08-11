@@ -45,3 +45,14 @@
 
     edges: 
       - [node_1.metadata.value, node_2.parameter.main_param]
+
+- step: 
+    name: param-print
+    environment: manual-gpu
+    image: python
+    command:
+      - echo "params " {parameters}
+    parameters:
+      - name: main_param
+        type: string
+        default: "twenty zero"
