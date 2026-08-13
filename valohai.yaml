@@ -56,3 +56,15 @@
       - name: main_param
         type: string
         default: "twenty zero"
+
+
+- step: 
+    name: input-step
+    environment: ec2-instance
+    image: python
+    command:
+      - ls -lR /valohai/inputs
+      - cat /valohai/inputs/data/*
+    inputs:
+      - name: data
+        optional: true
