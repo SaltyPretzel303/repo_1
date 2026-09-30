@@ -1,0 +1,59 @@
+- step: 
+    name: just_step
+    environment: manual-gpu
+    image: python
+    command:
+      - echo "the thingy"
+
+- pipeline:
+    name: lib_pipe
+    nodes:
+      - name: node_1
+        type: execution
+        step: just_step
+
+      - name: node_2
+        type: execution
+        step: param-print
+        commit: library:printy_lib/param-print
+
+    parameters:
+    - name: main_param
+      default: "value"
+      targets: [node_2.parameters.main_param]
+    edges:
+      - [node_1.dependency.*, node_2.dependency.*]
+
+- step: 
+    name: task-step
+    environment: manual-gpu
+    image: python
+    command:
+      - echo "the task" {parameters}
+    parameters: 
+      - name: param
+        type: integer
+        multiple: repeat
+        optional: true
+
+- pipeline:
+    name: task_pipe
+    nodes:
+      - name: node_1
+        type: execution
+        step: task-step
+
+      - name: node_2
+        type: task
+        step: task-step
+
+    parameters:
+    # - name: main_param
+    #   # default: "twenty two"
+    #   targets: [node_2.parameters.main_param]
+      - name: param
+        default: [1, 2, 3]
+        targets: [node_2.parameters.param]
+  
+    edges:
+      - [node_1.dependency.*, node_2.dependency.*]
