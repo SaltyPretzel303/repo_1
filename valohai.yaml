@@ -46,6 +46,8 @@
     edges: 
       - [node_1.metadata.value, node_2.parameter.main_param]
 
+
+
 - step: 
     name: param-print
     environment: manual-gpu
@@ -68,3 +70,26 @@
     inputs:
       - name: data
         optional: true
+
+- step: 
+    name: script-step
+    environment: manual-gpu
+    image: python 
+    command: 
+      - python script.py
+
+- pipeline: 
+    name: script-commit-pipe
+    nodes: 
+      - name: node_1
+        step: script-step
+        type: execution
+        # commit: d9036ff99517bcb2007ce3c7eec6b0348b11ec59
+
+      - name: node_2
+        step: script-step
+        type: execution 
+        # commit: 687443b9887154fadaf08d5db5b0ea2a5e4813a1
+
+    edges: 
+      - [node_1.dependency.*, node_2.dependency.*]
