@@ -73,7 +73,7 @@
 
 - step: 
     name: script-step
-    environment: manual-gpu
+    environment: tpad
     image: python 
     command: 
       - python script.py
