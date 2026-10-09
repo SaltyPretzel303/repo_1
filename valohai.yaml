@@ -17,18 +17,18 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step 1 commit 1.1" 
-      - echo '{"value":"1.1"}'
+      - echo "step 1 commit 1.2" 
+      - echo '{"value":"1.2"}'
 
 - step: 
     name: step_2
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_2 commit 2.2" 
+      - echo "step_2 commit 2.3" 
     parameters: 
       - name: main_param
-        default: "2.2"
+        default: "2.3"
 
 - pipeline: 
     name: commit_pipe
