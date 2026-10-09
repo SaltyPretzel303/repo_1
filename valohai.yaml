@@ -17,18 +17,18 @@
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_1 2. third commit mixed nodes" 
-      - echo '{"value":"11"}'
+      - echo "step 1 commit 1.1" 
+      - echo '{"value":"1.1"}'
 
 - step: 
     name: step_2
     environment: manual-gpu
     image: python 
     command: 
-      - echo "step_2 2. third commit mixed nodes" 
+      - echo "step_2 commit 2.2" 
     parameters: 
       - name: main_param
-        default: "21"
+        default: "2.2"
 
 - pipeline: 
     name: commit_pipe
@@ -36,12 +36,12 @@
       - name: node_1
         step: step_1
         type: execution
-        commit: d9036ff99517bcb2007ce3c7eec6b0348b11ec59
+        # commit: d9036ff99517bcb2007ce3c7eec6b0348b11ec59
 
       - name: node_2
         step: step_2
         type: execution 
-        commit: 687443b9887154fadaf08d5db5b0ea2a5e4813a1
+        # commit: 687443b9887154fadaf08d5db5b0ea2a5e4813a1
 
     edges: 
       - [node_1.metadata.value, node_2.parameter.main_param]
