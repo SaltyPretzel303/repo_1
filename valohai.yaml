@@ -78,6 +78,18 @@
     command: 
       - python script.py
 
+- step:
+    name: int_img
+    image: {parameter-value:img}
+    environment: alt-env
+    command: |
+      echo "yo from image: " {parameter-value:img}
+    parameters:
+      - name: img
+        type: string 
+        default: debian:13
+
+
 - pipeline: 
     name: script-commit-pipe
     nodes: 
