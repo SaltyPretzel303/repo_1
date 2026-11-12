@@ -80,7 +80,7 @@
 
 - step:
     name: int_img
-    image: {parameter-value:img}
+    image: "{parameter-value:img}"
     environment: alt-env
     command: |
       echo "yo from image: " {parameter-value:img}
